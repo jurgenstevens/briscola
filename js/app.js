@@ -3,6 +3,26 @@
 // S4a: Set up the visibile variables like deck, field, turn, round, winner
 let deck, field, turn, winner
 
+// S4a: Set up the player with its necessary properties
+let player = {
+    playerName: "Player",
+    hand: [],
+    selectedCard: null,
+    selectedCardIdx: null,
+    collectedCards: [],
+    scoreTotal: 0
+}
+
+// S4b: Set up the computer with its necessary properties
+let computer = {
+    playerName: "Computer",
+    hand: [],
+    selectedCard: null,
+    selectedCardIdx: null,
+    collectedCards: [],
+    scoreTotal: 0
+}
+
 /*------------------------ Cached Element References ------------------------*/
 
 
