@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+    <title>La Briscola</title>
+</head>
+<body>
+    <!-- S1: Set up your divs in a container and to their corresponding classes to add css later and go back to app.js Cached Elements for step 3 -->
+    <h1>La Briscola</h1>
+    <div class="container">
+        <h1 class="turn"></h1>
+        <div class="scores">
+            <div class="playerScore"></div>
+            <h3 class="message"></h3>
+            <h3 class="round"></h3>
+            <div class="opponentScore"></div>
+        </div>
+        <div class="table">
+            <div class="computer">
+                <h2>Computer Hand</h2>
+                <section class="computerHand"></section>
+                <section class="computerCardsCollected"></section>
+            </div>
+            <div class="field">
+                <h2>Field Cards</h2>
+                <section class="fieldCards"></section>
+            </div>
+            <div class="dealerDeck">
+                <h3>Dealer Deck</h3>
+            </div>
+            <div class="sameValueCardsList">
+                <section class="sameValueCards"></section>
+            </div>
+            <div class="player">
+                <h2>Player Hand</h2>
+                <section class="playerHand"></section>
+                <section class="playerCardsCollected"></section>
+            </div>
+        </div>
+        <div class="cardChoices"></div>
+        <div class="buttons">
+            <button class="startBtn">Start</button>
+            <button class="resetBtn" display="none">Reset</button>
+            <button class="instructions">How To Play</button>
+        </div>
+    </div>
+</body>
+</html>
