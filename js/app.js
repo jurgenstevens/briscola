@@ -1,26 +1,29 @@
+import Deck from "./deck.js"
 /*---------------------------- Variables (state) ----------------------------*/
 // S4: Set up the necessary variables
 // S4a: Set up the visibile variables like deck, field, turn, round, winner
-let deck, field, briscolaSuit, turn, roundWinner, gameWinner
+let deck, field, briscolaSuit, turn, round, roundWinner, gameWinner
 
 // S4a: Set up the player with its necessary properties
 let player = {
-    playerName: "Player",
-    hand: [],
-    selectedCard: null,
-    selectedCardIdx: null,
-    collectedCards: [],
-    scoreTotal: 0
+  playerName: "Player",
+  hand: [],
+  selectedCard: null,
+  selectedCardIdx: null,
+  collectedCards: [],
+  roundsWon: 0,
+  scoreTotal: 0
 }
 
 // S4b: Set up the computer with its necessary properties
 let computer = {
-    playerName: "Computer",
-    hand: [],
-    selectedCard: null,
-    selectedCardIdx: null,
-    collectedCards: [],
-    scoreTotal: 0
+  playerName: "Computer",
+  hand: [],
+  selectedCard: null,
+  selectedCardIdx: null,
+  collectedCards: [],
+  roundsWon: 0,
+  scoreTotal: 0
 }
 
 /*------------------------ Cached Element References ------------------------*/
@@ -43,7 +46,18 @@ startBtnEl.addEventListener('click', init)
 
 // S7 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
 function init(){
-    console.log("Game initialized.")
+  turnEl.innerText = `${turn}`
+  round = 1
+  roundWinner = null
+  roundWinner = null
+  deck = new Deck()
+  deck.reset()
+  deck.shuffle()
+  player.hand = deck.dealPlayer()
+  computer.hand = deck.dealComputer()
+  if (round === 1){
+    turn = -1
+  }
 }
 
 
