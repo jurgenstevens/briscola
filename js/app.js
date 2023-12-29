@@ -1,7 +1,7 @@
 /*---------------------------- Variables (state) ----------------------------*/
 // S4: Set up the necessary variables
 // S4a: Set up the visibile variables like deck, field, turn, round, winner
-let deck, field, briscolaSuit, turn, winner
+let deck, field, briscolaSuit, turn, roundWinner, gameWinner
 
 // S4a: Set up the player with its necessary properties
 let player = {
@@ -24,8 +24,8 @@ let computer = {
 }
 
 /*------------------------ Cached Element References ------------------------*/
-let startBtnEl = document.getElementById("startBtn")
-let resetBtnEl = document.getElementById("resetBtn")
+let startBtnEl = document.getElementById("start-button")
+let resetBtnEl = document.getElementById("reset-button")
 let instructionsBtnEl = document.getElementById("instructions")
 
 let turnEl = document.querySelector('.turn')
@@ -37,11 +37,14 @@ let playerHandEl = document.querySelector(".player-hand")
 let computerHandEl = document.querySelector(".computer-hand")
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+startBtnEl.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
-
+// S7 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
+function init(){
+    console.log("Game initialized.")
+}
 
 
 
