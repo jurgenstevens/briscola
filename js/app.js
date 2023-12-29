@@ -1,8 +1,7 @@
-/*-------------------------------- Constants --------------------------------*/
-
-
 /*---------------------------- Variables (state) ----------------------------*/
-
+// S4: Set up the necessary variables
+// S4a: Set up the visibile variables like deck, field, turn, round, winner
+let deck, field, turn, winner
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -11,6 +10,44 @@
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Step 1 - Define the required variables used to track the state of the game
 // 1a) Use a variable named `deck` to represent the state of the deck.
