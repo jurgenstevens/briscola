@@ -38,6 +38,7 @@ let messageEl = document.querySelector('.message')
 let fieldEl = document.querySelector(".field-cards")
 let playerHandEl = document.querySelector(".player-hand")
 let computerHandEl = document.querySelector(".computer-hand")
+let dealerDeckEl = document.querySelector("dealer-deck")
 
 /*----------------------------- Event Listeners -----------------------------*/
 startBtnEl.addEventListener('click', init)
@@ -46,7 +47,6 @@ startBtnEl.addEventListener('click', init)
 
 // S7 - Create a new deck and shuffle it by initializing the game and setting the turn and round to 1
 function init(){
-  turnEl.innerText = `${turn}`
   round = 1
   roundWinner = null
   roundWinner = null
@@ -55,9 +55,19 @@ function init(){
   deck.shuffle()
   player.hand = deck.dealPlayer()
   computer.hand = deck.dealComputer()
+  // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
+  briscolaSuit = deck.setBriscolaSuit()
+  deck.deck.pop()
+  console.log(round)
   if (round === 1){
     turn = -1
   }
+  render()
+}
+
+// S8: Create functions to render player, computer and field hands ref Ian's function on lines 488 - 512
+function render(){
+  roundEl.innerHTML = `Round: ${round}`
 }
 
 
@@ -95,18 +105,17 @@ function init(){
 
 
 
-
 // Step 1 - Define the required variables used to track the state of the game
-// 1a) Use a variable named `deck` to represent the state of the deck.
-// 1b) Use a variable named `players` to represent the state of the players.
-// 1c) Use a variable named `highSuit` to track the high suit card.
-// 1d) Use a variable named `roundWinner` to represent the winner of the current round.
-// 1e) Use a variable named `gameWinner` to represent the winner of the entire game.
-// 1f) Use a variable named `turn` to track whose turn it is.
+// ✓ 1a) Use a variable named `deck` to represent the state of the deck.
+// ✓ 1b) Use a variable named `players` to represent the state of the players.
+// ✓ 1c) Use a variable named `highSuit` to track the high suit card.
+// ✓ 1d) Use a variable named `roundWinner` to represent the winner of the current round.
+// ✓ 1e) Use a variable named `gameWinner` to represent the winner of the entire game.
+// ✓ 1f) Use a variable named `turn` to track whose turn it is.
 
 // Step 2 - Store cached element references.
-// 2a) In a constant called `playerEls`, store the elements representing the players on the page.
-// 2b) In a constant called `messageEl`, store the element that displays the game's status on the page.
+// ✓  2a) In a constant called `playerEls`, store the elements representing the players on the page.
+// ✓ 2b) In a constant called `messageEl`, store the element that displays the game's status on the page.
 
 // Step 3 - Upon loading, the game state should be initialized, and a function should be called to render this game state.
 // 3a) Create a function called `init`.

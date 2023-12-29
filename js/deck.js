@@ -23,26 +23,29 @@ class Deck {
   }
   // S5 - Create shuffle method
     // Referencing Ian's and the Fisher-Yates (Knuth) Shuffle algorithms
-    shuffle(){
-      const { deck } = this;
-      let currentIndex = deck.length, randomIndex;
-    
-      while (currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex--);
-    
-        [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
-      }
-    
-      return this;
+  shuffle(){
+    const { deck } = this;
+    let currentIndex = deck.length, randomIndex;
+  
+    while (currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex--);
+  
+      [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
+    }
+  
+    return this;
   }
   // S6 - Set up methods to deal cards to field, player and computer
   dealPlayer(){
-      let playerHand = this.deck.splice(this.deck.length - 3, 3)
-      return playerHand
+    let playerHand = this.deck.splice(this.deck.length - 3, 3)
+    return playerHand
   }
   dealComputer(){
-      let computerHand = this.deck.splice(this.deck.length - 3, 3)
-      return computerHand
+    let computerHand = this.deck.splice(this.deck.length - 3, 3)
+    return computerHand
+  }
+  setBriscolaSuit(){
+    return this.deck[this.deck.length - 1]
   }
 }
 
