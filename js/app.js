@@ -1,7 +1,7 @@
 /*---------------------------- Variables (state) ----------------------------*/
 // S4: Set up the necessary variables
 // S4a: Set up the visibile variables like deck, field, turn, round, winner
-let deck, field, turn, winner
+let deck, field, briscolaSuit, turn, winner
 
 // S4a: Set up the player with its necessary properties
 let player = {
@@ -24,7 +24,17 @@ let computer = {
 }
 
 /*------------------------ Cached Element References ------------------------*/
+let startBtnEl = document.getElementById("startBtn")
+let resetBtnEl = document.getElementById("resetBtn")
+let instructionsBtnEl = document.getElementById("instructions")
 
+let turnEl = document.querySelector('.turn')
+let roundEl = document.querySelector('.round')
+let messageEl = document.querySelector('.message')
+
+let fieldEl = document.querySelector(".field-cards")
+let playerHandEl = document.querySelector(".player-hand")
+let computerHandEl = document.querySelector(".computer-hand")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
