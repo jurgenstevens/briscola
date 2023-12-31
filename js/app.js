@@ -68,7 +68,27 @@ function init(){
 // S8: Create functions to render player, computer and field hands ref Ian's function on lines 488 - 512
 function render(){
   roundEl.innerHTML = `Round: ${round}`
+  // render computer cards
+  renderComputerCards()
+  // render player cards
+  // render field cards
+  // check for winner
 }
+
+// S9: Render the three (upside down later) opponent cards
+function renderComputerCards(){
+    computerHandEl.innerHTML = ""
+    computer.hand.forEach((card) => {
+        let computerCard = document.createElement('div')
+        computerCard.className = card
+        computerCard.id = card
+        computerCard.textContent = `${card}`
+        computerHandEl.appendChild(computerCard)
+    })
+}
+
+
+
 
 
 
