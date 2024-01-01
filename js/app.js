@@ -55,9 +55,6 @@ function init(){
   deck.shuffle()
   player.hand = deck.dealPlayer()
   computer.hand = deck.dealComputer()
-  // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
-  briscolaSuit = deck.setBriscolaSuit()
-  deck.deck.pop()
   console.log(round)
   if (round === 1){
     turn = -1
@@ -69,8 +66,23 @@ function init(){
 function render(){
   roundEl.innerHTML = `Round: ${round}`
   // render computer cards
-  renderComputerCards()
+  setTimeout(() => {
+      renderComputerCards()
+      console.log(computer.hand)
+  }, 1000)
   // render player cards
+  setTimeout(() => {
+    renderPlayerCards()
+    console.log(player.hand)
+  }, 3000)
+  // use setTimeout to push the last card in the deck after dealing to be the Briscola suit
+  setTimeout(() => {
+    // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
+    briscolaSuit = deck.setBriscolaSuit()
+    deck.deck.pop()
+    console.log(briscolaSuit)
+  }, 4000)
+
   // render field cards
   // check for winner
 }
@@ -87,20 +99,17 @@ function renderComputerCards(){
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// S10: Render the three player cards.
+function renderPlayerCards(){
+    playerHandEl.innerHTML = ""
+    player.hand.forEach((card) => {
+        let playerCard = document.createElement('div')
+        playerCard.className = card
+        playerCard.id = card
+        playerCard.textContent = `${card}`// => "suit" + "suitValue" 
+        playerHandEl.appendChild(playerCard)
+    })
+}
 
 
 
@@ -134,12 +143,12 @@ function renderComputerCards(){
 // ✓ 1f) Use a variable named `turn` to track whose turn it is.
 
 // Step 2 - Store cached element references.
-// ✓  2a) In a constant called `playerEls`, store the elements representing the players on the page.
+// ✓ 2a) In a constant called `playerEls`, store the elements representing the players on the page.
 // ✓ 2b) In a constant called `messageEl`, store the element that displays the game's status on the page.
 
 // Step 3 - Upon loading, the game state should be initialized, and a function should be called to render this game state.
-// 3a) Create a function called `init`.
-// 3b) Call this `init` function when the app loads.
+// ✓ 3a) Create a function called `init`.
+// ✓ 3b) Call this `init` function when the start button is clicked.
 // 3c) Set the `deck` variable to an array containing a deck of cards.
 // 3d) Shuffle the `deck`.
 // 3e) Deal cards to players.
