@@ -49,10 +49,10 @@ startBtnEl.addEventListener('click', init)
 function init(){
   round = 1
   roundWinner = null
-  roundWinner = null
   deck = new Deck()
   deck.reset()
   deck.shuffle()
+  field = []
   player.hand = deck.dealPlayer()
   computer.hand = deck.dealComputer()
   console.log(round)
@@ -74,7 +74,14 @@ function render(){
   setTimeout(() => {
     renderPlayerCards()
     console.log(player.hand)
-  }, 3000)
+  }, 2000)
+  if(round == 1){
+    setTimeout(() => {
+      let computerDealsFirstCard = computer.hand.pop()
+      field.push(computerDealsFirstCard)
+      console.log(field)
+    }, 3000)
+  }
   // use setTimeout to push the last card in the deck after dealing to be the Briscola suit
   setTimeout(() => {
     // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
@@ -82,7 +89,6 @@ function render(){
     deck.deck.pop()
     console.log(briscolaSuit)
   }, 4000)
-
   // render field cards
   // check for winner
 }
@@ -111,6 +117,18 @@ function renderPlayerCards(){
     })
 }
 
+// S11: Create a function to render the four field cards
+function renderFieldCards(){
+    fieldEl.innerHTML = ""
+    field.forEach((card) => {
+        let fieldCard = document.createElement('div')
+        fieldCard.className = card
+        fieldCard.id = card
+        fieldCard.textContent = `${card}`
+        fieldEl.appendChild(fieldCard)
+        //! Eventually create a function for the computer to match cards on its own.
+    })
+}
 
 
 
