@@ -38,7 +38,8 @@ let messageEl = document.querySelector('.message')
 let fieldEl = document.querySelector(".field-cards")
 let playerHandEl = document.querySelector(".player-hand")
 let computerHandEl = document.querySelector(".computer-hand")
-let dealerDeckEl = document.querySelector("dealer-deck")
+let dealerDeckEl = document.querySelector(".dealer-deck")
+let briscolaSuitEl = document.querySelector(".briscola-suit")
 
 /*----------------------------- Event Listeners -----------------------------*/
 startBtnEl.addEventListener('click', init)
@@ -55,7 +56,6 @@ function init(){
   field = []
   player.hand = deck.dealPlayer()
   computer.hand = deck.dealComputer()
-  console.log(round)
   if (round === 1){
     turn = -1
   }
@@ -67,67 +67,68 @@ function render(){
   roundEl.innerHTML = `Round: ${round}`
   // render computer cards
   setTimeout(() => {
-      renderComputerCards()
-      console.log(computer.hand)
-  }, 1000)
+    renderComputerCards()
+  }, 1500)
   // render player cards
   setTimeout(() => {
     renderPlayerCards()
-    console.log(player.hand)
   }, 2000)
-  if(round == 1){
-    setTimeout(() => {
-      let computerDealsFirstCard = computer.hand.pop()
-      field.push(computerDealsFirstCard)
-      console.log(field)
-    }, 3000)
-  }
   // use setTimeout to push the last card in the deck after dealing to be the Briscola suit
   setTimeout(() => {
     // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
     briscolaSuit = deck.setBriscolaSuit()
     deck.deck.pop()
-    console.log(briscolaSuit)
-  }, 4000)
+    briscolaSuitEl.innerHTML = `Current round suit: ${briscolaSuit}`
+  }, 2500)
+  setTimeout(() => {
+    renderFieldCards()
+  }, 3000)
   // render field cards
   // check for winner
 }
 
 // S9: Render the three (upside down later) opponent cards
 function renderComputerCards(){
-    computerHandEl.innerHTML = ""
-    computer.hand.forEach((card) => {
-        let computerCard = document.createElement('div')
-        computerCard.className = card
-        computerCard.id = card
-        computerCard.textContent = `${card}`
-        computerHandEl.appendChild(computerCard)
-    })
+  computerHandEl.innerHTML = ""
+  computer.hand.forEach((card) => {
+    let computerCard = document.createElement('div')
+    computerCard.className = card
+    computerCard.id = card
+    computerCard.textContent = `${card}`
+    computerHandEl.appendChild(computerCard)
+  })
+  if(round === 1){
+    setTimeout(() => {
+      let computerDealsFirstCard = computer.hand.pop()
+      console.log(computer.hand)
+      field.push(computerDealsFirstCard)
+    }, 1000)
+  }
 }
 
 // S10: Render the three player cards.
 function renderPlayerCards(){
-    playerHandEl.innerHTML = ""
-    player.hand.forEach((card) => {
-        let playerCard = document.createElement('div')
-        playerCard.className = card
-        playerCard.id = card
-        playerCard.textContent = `${card}`// => "suit" + "suitValue" 
-        playerHandEl.appendChild(playerCard)
-    })
+  playerHandEl.innerHTML = ""
+  player.hand.forEach((card) => {
+    let playerCard = document.createElement('div')
+    playerCard.className = card
+    playerCard.id = card
+    playerCard.textContent = `${card}`// => "suit" + "suitValue" 
+    playerHandEl.appendChild(playerCard)
+  })
 }
 
 // S11: Create a function to render the four field cards
 function renderFieldCards(){
-    fieldEl.innerHTML = ""
-    field.forEach((card) => {
-        let fieldCard = document.createElement('div')
-        fieldCard.className = card
-        fieldCard.id = card
-        fieldCard.textContent = `${card}`
-        fieldEl.appendChild(fieldCard)
-        //! Eventually create a function for the computer to match cards on its own.
-    })
+  fieldEl.innerHTML = ""
+  field.forEach((card) => {
+    let fieldCard = document.createElement('div')
+    fieldCard.className = card
+    fieldCard.id = card
+    fieldCard.textContent = `${card}`
+    fieldEl.appendChild(fieldCard)
+    //! Eventually create a function for the computer to match cards on its own.
+  })
 }
 
 
