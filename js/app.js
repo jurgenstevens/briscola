@@ -2,7 +2,7 @@ import Deck from "./deck.js"
 /*---------------------------- Variables (state) ----------------------------*/
 // S4: Set up the necessary variables
 // S4a: Set up the visibile variables like deck, field, turn, round, winner
-let deck, field, briscolaSuit, turn, round, roundWinner, gameWinner
+let deck, field, briscolaSuit, turn, round, roundWinner, firstCardRendered, gameWinner
 
 // S4a: Set up the player with its necessary properties
 let player = {
@@ -50,6 +50,7 @@ startBtnEl.addEventListener('click', init)
 function init(){
   round = 1
   roundWinner = null
+  firstCardRendered = false
   deck = new Deck()
   deck.reset()
   deck.shuffle()
@@ -99,9 +100,13 @@ function renderComputerCards(){
   })
   if(round === 1){
     setTimeout(() => {
-      let computerDealsFirstCard = computer.hand.pop()
-      console.log(computer.hand)
-      field.push(computerDealsFirstCard)
+      if(!firstCardRendered){
+        firstCardRendered = true
+        let computerDealsFirstCard = computer.hand.pop()
+        console.log(computer.hand)
+        field.push(computerDealsFirstCard)
+        renderComputerCards()
+      }
     }, 1000)
   }
 }
