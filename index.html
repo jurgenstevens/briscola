@@ -8,17 +8,7 @@
     <title>La Briscola</title>
 </head>
 <body>
-    <!-- S1: Set up your divs in a container and to their corresponding classes to add css later and go back to app.js Cached Elements for step 3 -->
-    <h1>La Briscola</h1>
     <div class="container">
-        <h1 class="turn"></h1>
-        <div class="score-board">
-            <h3 class="round"></h3>
-            <div class="player-score"></div>
-            <h3 class="message"></h3>
-            <div class="computer-score"></div>
-            <div class="briscola-suit"></div>
-        </div>
         <div class="table">
             <div class="computer">
                 <h2>Computer Hand</h2>
@@ -35,12 +25,22 @@
                 <section class="player-cards-collected"></section>
             </div>
         </div>
-        <div class="card-choices"></div>
-        <div class="buttons">
-            <button id="start-button">Start</button>
-            <button id="reset-button" display="none">Reset</button>
-            <button id="instructions">How To Play</button>
+        <div class="sidebar">
+            <h1 class="turn">La Briscola</h1>
+            <div class="score-board">
+                <h3 class="round"></h3>
+                <div class="player-score"></div>
+                <h3 class="message"></h3>
+                <div class="computer-score"></div>
+                <div class="briscola-suit"></div>
+            </div>
+            <div class="buttons">
+                <button id="start-button">Start</button>
+                <button id="reset-button" display="none">Reset</button>
+                <button id="instructions">How To Play</button>
+            </div>
         </div>
+        <div class="card-choices"></div>
     </div>
 </body>
 </html>

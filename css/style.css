@@ -1,27 +1,35 @@
 body {
-  background-color: black;
-  color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background-color: black;
+  color: whitesmoke;
 }
 
 .container {
-  text-align: center;
+  display: flex;
 }
 
 .table {
+  flex: 2; /* Takes up 2/3 of the container */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
 }
 
+.sidebar {
+  flex: 1; /* Takes up 1/3 of the container */
+  max-width: 20%; /* Ensure it doesn't exceed 33% */
+  margin: 0 10px; /* Add margin as needed */
+}
+
 .computer,
 .field,
-.player {
+.player,
+.score-board {
   margin: 0 10px;
 }
 
@@ -44,10 +52,6 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-}
-
-.buttons {
-  margin-top: 20px;
 }
 
 /* Additional styling for buttons */
