@@ -30,7 +30,7 @@ body {
 .field,
 .player,
 .score-board {
-  margin: 0 10px;
+  margin: 60px 10px;
 }
 
 .computer-hand,
@@ -42,9 +42,9 @@ body {
 
 .computer-hand,
 .player-hand {
-  border: 1px solid grey;
+  /* border: 1px solid grey;
   border-radius: 8px;
-  padding: 20px;
+  padding: 20px; */
 }
 
 .computer-hand div,
