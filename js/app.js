@@ -120,6 +120,7 @@ function renderPlayerCards(){
     playerCard.id = card
     playerCard.textContent = `${card}`// => "suit" + "suitValue" 
     playerHandEl.appendChild(playerCard)
+    playerCard.addEventListener('click', putPlayerCardDown)
   })
 }
 
@@ -136,9 +137,26 @@ function renderFieldCards(){
   })
 }
 
+// S12: Create a function to push user cards to field
+function putPlayerCardDown(event){
+  let selectedCard = event.target
+  console.log(selectedCard.id)
+  // push selected card to field
+  // call function to compare cards' suits and values
+  compareCardsAndSuits(selectedCard)
+}
 
+// S13: Create the function invoked in the putPlayerCardDown function 
+function compareCardsAndSuits(selectedCard){
+  // take the selected card and split its data
+  // take the field
 
+}
+// Computer function EASY mode
+  // select any random card and push to the field
 
+// Computer function MEDIUM mode
+  // 
 
 
 
