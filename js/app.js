@@ -103,7 +103,6 @@ function renderComputerCards(){
       if(!firstCardRendered){
         firstCardRendered = true
         let computerDealsFirstCard = computer.hand.pop()
-        console.log(computer.hand)
         field.push(computerDealsFirstCard)
         renderComputerCards()
       }
@@ -141,16 +140,31 @@ function renderFieldCards(){
 function putPlayerCardDown(event){
   let selectedCard = event.target
   console.log(selectedCard.id)
-  // push selected card to field
+  // push selected card to field - USE SET TIME OUT FOR DELAY
   // call function to compare cards' suits and values
   compareCardsAndSuits(selectedCard)
 }
 
 // S13: Create the function invoked in the putPlayerCardDown function 
 function compareCardsAndSuits(selectedCard){
+  const regex = /([a-z]+)|([FCR][a-z]+)|(\d+)|([A-Z][a-z]*)/g
   // take the selected card and split its data
-  // take the field
-
+  let selectedCardData = selectedCard.id.match(regex)
+  // take the field card and split its data
+  let fieldCard = field[0].match(regex)
+  // take the currentBriscola suit and split its data
+  let currentBriscolaCard = briscolaSuit.match(regex)
+  // if the selected card's suit is equal the current briscola suit and current field card's suit
+    // create another if to check to see if the current card's number value is greater than the other
+      // listing cards from highest value to lowest in points:
+        // 01 - ace - 11 points
+        // 03 - three - 10 points
+        // 10 - Re - 4 points
+        // 09 - Cavallo - 3 points
+        // 08 - Re - 2 points
+    // else, no points given and the person who's turn it isn't, gets the point
+  
+  //
 }
 // Computer function EASY mode
   // select any random card and push to the field
