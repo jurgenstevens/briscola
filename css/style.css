@@ -43,8 +43,8 @@ body {
 .computer-hand div,
 .field-cards div,
 .player-hand div {
-  width: 50px; /* Adjust as needed */
-  height: 80px; /* Adjust as needed */
+  width: 109.85px; /* Increase width by 30% */
+  height: 175.76px; /* Increase height by 30% */
   background-color: lightgray;
   border: 1px solid gray;
   margin: 0 5px;
@@ -52,6 +52,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  background-size: 100%; /* Shrink the background image size by 50% */
 }
 
 /* Additional styling for buttons */
@@ -59,3 +60,165 @@ button {
   margin: 0 5px;
   padding: 10px;
 }
+
+#spades01 {
+  background-image: url('/images/cards/spades01.png');
+}
+
+#spades02 {
+  background-image: url('/images/cards/spades02.png');
+}
+
+#spades03 {
+  background-image: url('/images/cards/spades03.png');
+}
+
+#spades04 {
+  background-image: url('/images/cards/spades04.png');
+}
+
+#spades05 {
+  background-image: url('/images/cards/spades05.png');
+}
+
+#spades06 {
+  background-image: url('/images/cards/spades06.png');
+}
+
+#spades07 {
+  background-image: url('/images/cards/spades07.png');
+}
+
+#spadesFante08 {
+  background-image: url('/images/cards/spadesFante08.png');
+}
+
+#spadesCavallo09 {
+  background-image: url('/images/cards/spadesCavallo09.png');
+}
+
+#spadesRe10 {
+  background-image: url('/images/cards/spadesRe10.png');
+}
+
+
+#coins01 {
+  background-image: url('/images/cards/coins01.png');
+}
+
+#coins02 {
+  background-image: url('/images/cards/coins02.png');
+}
+
+#coins03 {
+  background-image: url('/images/cards/coins03.png');
+}
+
+#coins04 {
+  background-image: url('/images/cards/coins04.png');
+}
+
+#coins05 {
+  background-image: url('/images/cards/coins05.png');
+}
+
+#coins06 {
+  background-image: url('/images/cards/coins06.png');
+}
+
+#coins07 {
+  background-image: url('/images/cards/coins07.png');
+}
+
+#coinsFante08 {
+  background-image: url('/images/cards/coinsFante08.png');
+}
+
+#coinsCavallo09 {
+  background-image: url('/images/cards/coinsCavallo09.png');
+}
+
+#coinsRe10 {
+  background-image: url('/images/cards/coinsRe10.png');
+}
+
+#clubs01 {
+  background-image: url('/images/cards/clubs01.png');
+}
+
+#clubs02 {
+  background-image: url('/images/cards/clubs02.png');
+}
+
+#clubs03 {
+  background-image: url('/images/cards/clubs03.png');
+}
+
+#clubs04 {
+  background-image: url('/images/cards/clubs04.png');
+}
+
+#clubs05 {
+  background-image: url('/images/cards/clubs05.png');
+}
+
+#clubs06 {
+  background-image: url('/images/cards/clubs06.png');
+}
+
+#clubs07 {
+  background-image: url('/images/cards/clubs07.png');
+}
+
+#clubsFante08 {
+  background-image: url('/images/cards/clubsFante08.png');
+}
+
+#clubsCavallo09 {
+  background-image: url('/images/cards/clubsCavallo09.png');
+}
+
+#clubsRe10 {
+  background-image: url('/images/cards/clubsRe10.png');
+}
+
+#cups01 {
+  background-image: url('/images/cards/cups01.png');
+}
+
+#cups02 {
+  background-image: url('/images/cards/cups02.png');
+}
+
+#cups03 {
+  background-image: url('/images/cards/cups03.png');
+}
+
+#cups04 {
+  background-image: url('/images/cards/cups04.png');
+}
+
+#cups05 {
+  background-image: url('/images/cards/cups05.png');
+}
+
+#cups06 {
+  background-image: url('/images/cards/cups06.png');
+}
+
+#cups07 {
+  background-image: url('/images/cards/cups07.png');
+}
+
+#cupsFante08 {
+  background-image: url('/images/cards/cupsFante08.png');
+}
+
+#cupsCavallo09 {
+  background-image: url('/images/cards/cupsCavallo09.png');
+}
+
+#cupsRe10 {
+  background-image: url('/images/cards/cupsRe10.png');
+}
+

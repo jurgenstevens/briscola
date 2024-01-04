@@ -95,7 +95,7 @@ function renderComputerCards(){
     let computerCard = document.createElement('div')
     computerCard.className = card
     computerCard.id = card
-    computerCard.textContent = `${card}`
+    // computerCard.textContent = `${card}`
     computerHandEl.appendChild(computerCard)
   })
   if(round === 1){
@@ -117,7 +117,7 @@ function renderPlayerCards(){
     let playerCard = document.createElement('div')
     playerCard.className = card
     playerCard.id = card
-    playerCard.textContent = `${card}`// => "suit" + "suitValue" 
+    // playerCard.textContent = `${card}`// => "suit" + "suitValue" 
     playerHandEl.appendChild(playerCard)
     playerCard.addEventListener('click', putPlayerCardDown)
   })
@@ -130,7 +130,7 @@ function renderFieldCards(){
     let fieldCard = document.createElement('div')
     fieldCard.className = card
     fieldCard.id = card
-    fieldCard.textContent = `${card}`
+    // fieldCard.textContent = `${card}`
     fieldEl.appendChild(fieldCard)
     //! Eventually create a function for the computer to match cards on its own.
   })
@@ -140,9 +140,13 @@ function renderFieldCards(){
 function putPlayerCardDown(event){
   let selectedCard = event.target
   console.log(selectedCard.id)
+  field.push(selectedCard.id)
+  renderFieldCards()
+  player.hand.pop()
+  renderPlayerCards()
   // push selected card to field - USE SET TIME OUT FOR DELAY
   // call function to compare cards' suits and values
-  compareCardsAndSuits(selectedCard)
+  // compareCardsAndSuits(selectedCard)
 }
 
 // S13: Create the function invoked in the putPlayerCardDown function 
