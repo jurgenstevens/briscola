@@ -57,7 +57,10 @@ body {
 }
 
 .briscola-card {
-  
+  width: 175.76px;
+  height: 109.85px;
+  background-size: contain;
+  transform: rotate(270deg);
 }
 
 /* Additional styling for buttons */

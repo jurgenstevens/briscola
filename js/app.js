@@ -82,7 +82,7 @@ function render(){
     briscolaSuit = deck.setBriscolaSuit()
     let theBriscolaCard = document.createElement('div')
     theBriscolaCard.id = briscolaSuit
-    theBriscolaCard.class = "briscola-card"
+    theBriscolaCard.className = "briscola-card"
     briscolaSuitEl.appendChild(theBriscolaCard)
     deck.deck.pop()
     // briscolaSuitEl.innerHTML = `Current round suit: ${briscolaSuit}`
