@@ -108,6 +108,7 @@ function renderComputerCards(){
       }
     }, 1000)
   }
+  console.log(computer.hand)
 }
 
 // S10: Render the three player cards.
@@ -117,10 +118,10 @@ function renderPlayerCards(){
     let playerCard = document.createElement('div')
     playerCard.className = card
     playerCard.id = card
-    // playerCard.textContent = `${card}`// => "suit" + "suitValue" 
     playerHandEl.appendChild(playerCard)
     playerCard.addEventListener('click', putPlayerCardDown)
   })
+  console.log(player.hand)
 }
 
 // S11: Create a function to render the four field cards
@@ -130,20 +131,24 @@ function renderFieldCards(){
     let fieldCard = document.createElement('div')
     fieldCard.className = card
     fieldCard.id = card
-    // fieldCard.textContent = `${card}`
     fieldEl.appendChild(fieldCard)
     //! Eventually create a function for the computer to match cards on its own.
   })
+  console.log(field)
 }
 
 // S12: Create a function to push user cards to field
 function putPlayerCardDown(event){
   let selectedCard = event.target
+  let cardSelectedId = event.target.id
   console.log(selectedCard.id)
-  field.push(selectedCard.id)
+  field.push(cardSelectedId)
   renderFieldCards()
-  player.hand.pop()
+  player.hand = player.hand.filter((card) => card !== cardSelectedId)
+  console.log(player.hand)
   renderPlayerCards()
+  // switch turn
+
   // push selected card to field - USE SET TIME OUT FOR DELAY
   // call function to compare cards' suits and values
   // compareCardsAndSuits(selectedCard)

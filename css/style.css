@@ -40,13 +40,6 @@ body {
   justify-content: space-around;
 }
 
-.computer-hand,
-.player-hand {
-  /* border: 1px solid grey;
-  border-radius: 8px;
-  padding: 20px; */
-}
-
 .computer-hand div,
 .field-cards div,
 .player-hand div {
