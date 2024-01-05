@@ -78,6 +78,7 @@ function render(){
   setTimeout(() => {
     // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
     briscolaSuit = deck.setBriscolaSuit()
+    let theBriscolaCard = document.createElement('div')
     deck.deck.pop()
     briscolaSuitEl.innerHTML = `Current round suit: ${briscolaSuit}`
   }, 2500)
@@ -108,7 +109,6 @@ function renderComputerCards(){
       }
     }, 1000)
   }
-  console.log(computer.hand)
 }
 
 // S10: Render the three player cards.
@@ -121,7 +121,6 @@ function renderPlayerCards(){
     playerHandEl.appendChild(playerCard)
     playerCard.addEventListener('click', putPlayerCardDown)
   })
-  console.log(player.hand)
 }
 
 // S11: Create a function to render the four field cards
@@ -134,7 +133,6 @@ function renderFieldCards(){
     fieldEl.appendChild(fieldCard)
     //! Eventually create a function for the computer to match cards on its own.
   })
-  console.log(field)
 }
 
 // S12: Create a function to push user cards to field
@@ -147,30 +145,37 @@ function putPlayerCardDown(event){
   player.hand = player.hand.filter((card) => card !== cardSelectedId)
   console.log(player.hand)
   renderPlayerCards()
-  // switch turn
-
+  
   // push selected card to field - USE SET TIME OUT FOR DELAY
-  // call function to compare cards' suits and values
-  // compareCardsAndSuits(selectedCard)
+    // call function to compare cards' suits and values
+    compareCardsAndSuits(selectedCard)
+    // switch turn
 }
 
 // S13: Create the function invoked in the putPlayerCardDown function 
 function compareCardsAndSuits(selectedCard){
+  // use regex to split any card's data
   const regex = /([a-z]+)|([FCR][a-z]+)|(\d+)|([A-Z][a-z]*)/g
   // take the selected card and split its data
   let selectedCardData = selectedCard.id.match(regex)
+  console.log(selectedCardData)
   // take the field card and split its data
-  let fieldCard = field[0].match(regex)
+  let fieldCardData = field[0].match(regex)
+  console.log(fieldCardData)
   // take the currentBriscola suit and split its data
   let currentBriscolaCard = briscolaSuit.match(regex)
+  console.log(currentBriscolaCard)
   // if the selected card's suit is equal the current briscola suit and current field card's suit
+  if(selectedCardData[0] == currentBriscolaCard[0] && selectedCardData[0] == fieldCardData[0]){
+    console.log("Selected card's suit match Briscola!")
     // create another if to check to see if the current card's number value is greater than the other
-      // listing cards from highest value to lowest in points:
-        // 01 - ace - 11 points
-        // 03 - three - 10 points
-        // 10 - Re - 4 points
-        // 09 - Cavallo - 3 points
-        // 08 - Re - 2 points
+    // listing cards from highest value to lowest in points:
+    // 01 - ace - 11 points
+    // 03 - three - 10 points
+    // 10 - Re - 4 points
+    // 09 - Cavallo - 3 points
+    // 08 - Re - 2 points
+  }
     // else, no points given and the person who's turn it isn't, gets the point
   
   //
