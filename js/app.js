@@ -238,11 +238,11 @@ function compareCardsAndSuits(selectedCard){
 
 
 function resetGame(){
-  init()
   fieldEl.innerHTML = ""
   briscolaSuitEl.innerHTML = ""
   computerHandEl.innerHTML = ""
   playerHandEl.innerHTML = ""
+  init()
   resetBtnEl.style.display = resetBtnEl.style.display === 'none' ? '' : 'none'
 }
 
