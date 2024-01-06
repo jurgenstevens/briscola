@@ -31,9 +31,11 @@ let computer = {
 /*------------------------ Cached Element References ------------------------*/
 let startBtnEl = document.getElementById("start-button")
 let resetBtnEl = document.getElementById("reset-button")
+resetBtnEl.style.display = 'none'
 let instructionsBtnEl = document.getElementById("instructions")
+let titleEl = document.querySelector('.title')
 
-let turnEl = document.querySelector('.turn')
+// let turnEl = document.querySelector('.turn')
 let roundEl = document.querySelector('.round')
 let messageEl = document.querySelector('.message')
 
@@ -45,6 +47,7 @@ let briscolaSuitEl = document.querySelector(".briscola-suit")
 
 /*----------------------------- Event Listeners -----------------------------*/
 startBtnEl.addEventListener('click', init)
+resetBtnEl.addEventListener('click', resetGame)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -59,6 +62,10 @@ function init(){
   field = []
   player.hand = deck.dealPlayer()
   computer.hand = deck.dealComputer()
+  startBtnEl.style.display = 'none'
+  resetBtnEl.style.display = resetBtnEl.style.display === 'none' ? '' : 'none'
+  titleEl.style.color = 'black'
+
   if (round === 1){
     turn = -1
   }
@@ -79,19 +86,22 @@ function render(){
   // use setTimeout to push the last card in the deck after dealing to be the Briscola suit
   setTimeout(() => {
     // set the briscola suit to the suit of the last card in the dealer's deck after dealing to the computer and player
-    briscolaSuit = deck.setBriscolaSuit()
-    let theBriscolaCard = document.createElement('div')
-    theBriscolaCard.id = briscolaSuit
-    theBriscolaCard.className = "briscola-card"
-    briscolaSuitEl.appendChild(theBriscolaCard)
-    deck.deck.pop()
-    // briscolaSuitEl.innerHTML = `Current round suit: ${briscolaSuit}`
+    setBriscolaCard()
   }, 2500)
   setTimeout(() => {
     renderFieldCards()
   }, 3000)
   // render field cards
   // check for winner
+}
+
+function setBriscolaCard(){
+  briscolaSuit = deck.setBriscolaSuit()
+  let theBriscolaCard = document.createElement('div')
+  theBriscolaCard.id = briscolaSuit
+  theBriscolaCard.className = "briscola-card"
+  briscolaSuitEl.appendChild(theBriscolaCard)
+  deck.deck.pop()
 }
 
 // S9: Render the three (upside down later) opponent cards
@@ -209,6 +219,10 @@ function compareCardsAndSuits(selectedCard){
       // 08 - Re - 2 points
       selectedCardData[selectedCardData.length -1] == "08" ? player.scoreTotal += 2 : null
   }
+  if(selectedCardData[0] !== currentBriscolaCard[0] && selectedCardData[0] !== fieldCardData[0]){
+    // create another if to check to see if the current card's number value is greater than the other
+      console.log("My card matches the briscola but not the field suit, Points for me!")
+  }
   
   //
 }
@@ -223,7 +237,14 @@ function compareCardsAndSuits(selectedCard){
 
 
 
-
+function resetGame(){
+  init()
+  fieldEl.innerHTML = ""
+  briscolaSuitEl.innerHTML = ""
+  computerHandEl.innerHTML = ""
+  playerHandEl.innerHTML = ""
+  resetBtnEl.style.display = resetBtnEl.style.display === 'none' ? '' : 'none'
+}
 
 
 

@@ -8,6 +8,11 @@ body {
   color: whitesmoke;
 }
 
+#reset-button {
+  /* display: none; */
+}
+
+
 .container {
   display: flex;
 }
@@ -47,6 +52,7 @@ body {
   width: 109.85px; /* Increase width by 30% */
   height: 175.76px; /* Increase height by 30% */
   background-color: lightgray;
+  border-radius: 5px;
   border: 1px solid gray;
   margin: 0 5px;
   display: flex;
