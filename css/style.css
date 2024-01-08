@@ -8,11 +8,6 @@ body {
   color: whitesmoke;
 }
 
-#reset-button {
-  /* display: none; */
-}
-
-
 .container {
   display: flex;
 }
@@ -68,6 +63,22 @@ body {
   background-size: contain;
   transform: rotate(270deg);
 }
+
+.dealer-deck {
+  width: 109.85px; /* Increase width by 30% */
+  height: 175.76px; /* Increase height by 30% */
+  background-color: lightgray;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background-size: 100%;
+  background-image: url('/images/cards/modiano-back.png');
+}
+
 
 /* Additional styling for buttons */
 button {

@@ -37,6 +37,8 @@ let titleEl = document.querySelector('.title')
 
 // let turnEl = document.querySelector('.turn')
 let roundEl = document.querySelector('.round')
+let playerScoreEl = document.querySelector('.player-score')
+let computerScoreEl = document.querySelector('.computer-score')
 let messageEl = document.querySelector('.message')
 
 let fieldEl = document.querySelector(".field-cards")
@@ -75,6 +77,8 @@ function init(){
 // S8: Create functions to render player, computer and field hands ref Ian's function on lines 488 - 512
 function render(){
   roundEl.innerHTML = `Round: ${round}`
+  playerScoreEl.innerHTML = `Your score: ${player.scoreTotal}`
+  computerScoreEl.innerHTML = `Opponent's: ${computer.scoreTotal}`
   // render computer cards
   setTimeout(() => {
     renderComputerCards()
@@ -154,11 +158,11 @@ function renderFieldCards(){
 function putPlayerCardDown(event){
   let selectedCard = event.target
   let cardSelectedId = event.target.id
+  let computerCardSelected
   console.log(selectedCard.id)
   field.push(cardSelectedId)
   renderFieldCards()
   player.hand = player.hand.filter((card) => card !== cardSelectedId)
-  console.log(player.hand)
   renderPlayerCards()
   
   // push selected card to field - USE SET TIME OUT FOR DELAY
@@ -173,52 +177,22 @@ function compareCardsAndSuits(selectedCard){
   const regex = /([a-z]+)|([FCR][a-z]+)|(\d+)|([A-Z][a-z]*)/g
   // take the selected card and split its data
   let selectedCardData = selectedCard.id.match(regex)
-  console.log(selectedCardData)
   // take the field card and split its data
   let fieldCardData = field[0].match(regex)
-  console.log(fieldCardData)
   // take the currentBriscola suit and split its data
   let currentBriscolaCard = briscolaSuit.match(regex)
-  console.log(currentBriscolaCard)
   // if the selected card's suit is equal the current briscola suit and current field card's suit
   if(selectedCardData[0] === currentBriscolaCard[0] && selectedCardData[0] === fieldCardData[0]){
     // create another if to check to see if the current card's number value is greater than the other
-    if(selectedCardData[selectedCardData.length - 1] > fieldCardData[fieldCardData.length - 1]){
+    if(selectedCardData[selectedCardData.length - 1] > fieldCardData[fieldCardData.length - 1] && selectedCardData[selectedCardData.length - 1] === "01" || selectedCardData[selectedCardData.length - 1] === "03"){
       console.log("My card matches the briscola and field suit and is worth more")
       // listing cards from highest value to lowest in points:
-      // 01 - ace - 11 points
-      selectedCardData[selectedCardData.length -1] == "01" ? player.scoreTotal += 11 :
-      // 03 - three - 10 points
-      selectedCardData[selectedCardData.length -1] == "03" ? player.scoreTotal += 10 :
-      // 10 - Re - 4 points
-      selectedCardData[selectedCardData.length -1] == "10" ? player.scoreTotal += 4 :
-      // 09 - Cavallo - 3 points
-      selectedCardData[selectedCardData.length -1] == "09" ? player.scoreTotal += 3 :
-      // 08 - Re - 2 points
-      selectedCardData[selectedCardData.length -1] == "08" ? player.scoreTotal += 2 : 
-      // push these cards to the player's deck
-      0 && console.log("Points for you. None for the opponent.")
-      // create an else if to give higher points for an ace or three card.
-    } else {
-      // else, no points given and the person who's turn it isn't, gets the point
-      console.log("Award points to the opponent!")
-      // push these cards to their deck
     }
   }
+  // access by field cards instead.
   if(selectedCardData[0] === currentBriscolaCard[0] && selectedCardData[0] !== fieldCardData[0]){
     // create another if to check to see if the current card's number value is greater than the other
       console.log("My card doesn't match the field's suit but matches the briscola's, points for me!")
-      // listing cards from highest value to lowest in points:
-      // 01 - ace - 11 points
-      selectedCardData[selectedCardData.length -1] == "01" ? player.scoreTotal += 11 :
-      // 03 - three - 10 points
-      selectedCardData[selectedCardData.length -1] == "03" ? player.scoreTotal += 10 :
-      // 10 - Re - 4 points
-      selectedCardData[selectedCardData.length -1] == "10" ? player.scoreTotal += 4 :
-      // 09 - Cavallo - 3 points
-      selectedCardData[selectedCardData.length -1] == "09" ? player.scoreTotal += 3 :
-      // 08 - Re - 2 points
-      selectedCardData[selectedCardData.length -1] == "08" ? player.scoreTotal += 2 : 0
   }
   if(selectedCardData[0] !== currentBriscolaCard[0] && selectedCardData[0] !== fieldCardData[0]){
     // create another if to check to see if the current card's number value is greater than the other
@@ -226,27 +200,54 @@ function compareCardsAndSuits(selectedCard){
   }
   if(selectedCardData[0] == currentBriscolaCard[0] && selectedCardData[0] == fieldCardData[0] && parseInt(selectedCardData[selectedCardData.length - 1]) > parseInt(fieldCardData[fieldCardData.length - 1])){
     // create another if to check to see if the current card's number value is greater than the other
-    console.log(selectedCardData[selectedCardData.length - 1])
-    console.log(fieldCardData[fieldCardData.length - 1])
+    console.log(parseInt(selectedCardData[selectedCardData.length - 1]))
+    console.log(parseInt(fieldCardData[fieldCardData.length - 1]))
     console.log("My card suit matches the briscola and the field suit, but my card's value is higher than the field's. Points for me, my turn still. ")
   }
   if(selectedCardData[0] !== currentBriscolaCard[0] && selectedCardData[0] == fieldCardData[0] && parseInt(selectedCardData[selectedCardData.length - 1]) > parseInt(fieldCardData[fieldCardData.length - 1])){
     // create another if to check to see if the current card's number value is greater than the other
-    console.log(selectedCardData[selectedCardData.length - 1])
-    console.log(fieldCardData[fieldCardData.length - 1])
+    console.log(parseInt(selectedCardData[selectedCardData.length - 1]))
+    console.log(parseInt(fieldCardData[fieldCardData.length - 1]))
     console.log("My card suit doesn't match the briscola, but matches the field suit and my card's value is higher than the field's. Points for me, my turn still. ")
   }
   if(selectedCardData[0] !== currentBriscolaCard[0] && selectedCardData[0] == fieldCardData[0] && parseInt(selectedCardData[selectedCardData.length - 1]) < parseInt(fieldCardData[fieldCardData.length - 1])){
     // create another if to check to see if the current card's number value is greater than the other
-    console.log(selectedCardData[selectedCardData.length - 1])
-    console.log(fieldCardData[fieldCardData.length - 1])
+    console.log(parseInt(selectedCardData[selectedCardData.length - 1]))
+    console.log(parseInt(fieldCardData[fieldCardData.length - 1]))
     console.log("My card suit doesn't match the briscola, but matches the field suit and their card's value is higher than mine. Points for them, computer's turn. ")
   }
-  
-  //
 }
 
 // create a function called awardPoints that will check the current turn and award the correct points according to the last numbers of the card data array passed as a parameter to the player or the computer
+function awardPointsTo(){
+  // create two variables to track the player's current field card and the computer's current field card
+  let currPlayerFieldCard
+  let currComputerFieldCard
+  // if the current turn is the computer's, the first card in the field array is theirs, 
+  // else it's the player's card.
+
+  // listing cards from highest value to lowest in points:
+  // if(selectedCardData[selectedCardData.length -1] === "01"){
+  //   01 - ace - 11 points
+  //   player.scoreTotal += 11 
+  // } else if(selectedCardData[selectedCardData.length -1] === "03"){
+  //   03 - three - 10 points
+  //   player.scoreTotal += 10
+  // } else if(selectedCardData[selectedCardData.length -1] === "10"){
+  //   03 - three - 10 points
+  //   player.scoreTotal += 10
+  // } else if(selectedCardData[selectedCardData.length -1] === "09"){
+  //   03 - three - 10 points
+  //   player.scoreTotal += 10
+  // } else if(selectedCardData[selectedCardData.length -1] === "08"){
+  //   03 - three - 10 points
+  //   player.scoreTotal += 10
+  // }
+}
+
+// create a function called dealNewCard, which is called after every comparison that will deal a card after the player and opponent places a card down and have it render a new card on their decks
+
+// create a function called checkForWinner, place it in the putPlayerCardDown function, check to see if there are any cards left in the deck, in the player's or computer's hand, or the field, if there's none, compare points and check who the winner is.
 
 // Computer function EASY mode
   // select any random card and push to the field
