@@ -35,8 +35,8 @@ Check out the Attributions section for credits and acknowledgments.
 
 ## Ice Box Features
 
-- [x]   
 - [ ] Add different card deck options.   
+- [ ] Include API for users to see where their score stands.   
 - [ ] Light/Dark Mode.  
 - [ ] Allow players to play rounds.  
 - [ ] Create mobile version with touch events.  
