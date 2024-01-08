@@ -1,10 +1,9 @@
-# Briscola Game
-
-Briscola is a card game re-creation! Play the game online [here](#).
+# Briscola  
+Briscola is an Italian card game. Play the game online [here](https://labriscola.netlify.app/)!
 
 ## Gameplay
 
-It is played with 2 or 4 players using a 40-card deck, and usually, players compete in pairs. Each game consists of three hands, and the winner of each hand is the first to exceed 60 points. The card points are as follows:
+It is played with 2 or 4 players using a 40-card deck, and usually, players compete in pairs. Here, you'll be playing against a computer. Each game consists of three hands, and the winner of each hand is the first to exceed 60 points. The card points are as follows:
 
 Ace = 11
 Three = 10
@@ -26,12 +25,6 @@ Responding is not mandatory, and during the first round, players cannot communic
 ## Credits 🙌
 
 Check out the Attributions section for credits and acknowledgments.
-
-## Recent Changes 
-
-- Refactored CSS, reducing file size by almost a quarter while simultaneously allowing for easier modification in the future.
-- Made big changes to how light and dark mode interacts with the DOM, reducing the number of items held in the cache, massively improving memory performance.
-- Changes around the number of columns and rows available to improve performance.
 
 ## Ice Box Features
 
